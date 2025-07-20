@@ -1,0 +1,876 @@
+#pdf-content {
+    position: relative;
+}
+
+#watermark {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 25px;
+    /* Adjusted font size to match the image */
+    font-weight: 900;
+    /* Extra bold */
+    color: black;
+    font-family: Arial, sans-serif;
+    /* Ensure consistency with the logo font */
+    letter-spacing: -2px;
+    /* Adjust letter spacing for accuracy */
+    text-transform: lowercase;
+    /* Ensure lowercase letters like in the logo */
+}
+
+#mark_dot {
+    color: black;
+    /* Match dot color with the text */
+}
+
+#first_top_title {
+    margin-top: 65px;
+    font-size: 32px;
+    /* text-align: center; */
+}
+
+.inactive {
+    background-color: #a3c5ee;
+    /* Muted version of #4997ea */
+    color: rgba(255, 255, 255, 0.7);
+    /* Slightly faded text */
+    opacity: 0.6;
+    /* Makes the button appear disabled */
+    cursor: not-allowed;
+    /* Shows a disabled cursor */
+    border: 1px solid #87b4e6;
+    /* Soft border for depth */
+    box-shadow: none;
+    /* Removes any existing shadows */
+    transition: all 0.3s ease-in-out;
+    /* Smooth transition for visual effects */
+}
+
+.w-select {
+    background-color: white;
+}
+
+.required-mark {
+    color: red;
+}
+
+.error {
+    border: 2px solid red;
+}
+
+.error-message {
+    color: red;
+    font-size: 12px;
+    display: none;
+}
+
+.form-hidden {
+    display: none;
+}
+
+/* Full-width search bar container */
+.search-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    /* Full width */
+    max-width: 600px;
+    /* Maximum width for better readability */
+    margin: 20px auto;
+    padding: 12px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Full-width input field */
+.postcode-search {
+    flex: 1;
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.3s ease-in-out;
+}
+
+.postcode-search:focus {
+    border-color: #007bff;
+}
+
+/* Search button with fixed size */
+.postcode-search-button {
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #169bed;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.postcode-search-button:hover {
+    background-color: #106397;
+}
+
+/* Mobile-friendly adjustments */
+@media (max-width: 600px) {
+    .search-container {
+        flex-direction: column;
+        align-items: stretch;
+        max-width: 100%;
+        padding: 10px;
+    }
+
+    .postcode-search {
+        width: 100%;
+    }
+
+    .postcode-search-button {
+        width: 100%;
+    }
+}
+
+.choices {
+    width: 100%;
+    font-size: 16px;
+}
+
+.choices__inner {
+    border-radius: 8px !important;
+    padding: 10px;
+    background-color: white !important;
+    border: 1px solid #169bed5e !important;
+}
+
+.choices__list--multiple .choices__item {
+    background: #169bed !important;
+    color: #fff;
+    border-radius: 16px;
+    padding: 5px 10px;
+    margin: 5px;
+    font-size: 14px;
+}
+
+.choices__list--dropdown {
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.choices__list--dropdown .choices__item--selectable {
+    background: white !important;
+    padding: 8px;
+    transition: background 0.3s;
+}
+
+.choices__list--dropdown .choices__item--selectable:hover {
+    background: #F3F4F8 !important;
+    color: #080808;
+}
+
+/* Responsive layout */
+.search-container {
+    display: flex;
+    flex-wrap: wrap;
+    /* Allows items to wrap on smaller screens */
+    gap: 10px;
+    /* Spacing between elements */
+    align-items: center;
+    /* Center align vertically */
+    max-width: 100%;
+}
+
+.postcode-search,
+.select-modern,
+.postcode-search-button {
+    padding: 10px 12px;
+    /* Comfortable padding */
+    font-size: 16px;
+    /* Better text readability */
+    border: 1px solid #ccc;
+    /* Light border */
+    border-radius: 8px;
+    /* Smooth rounded corners */
+    width: 100%;
+    /* Default to full width for small screens */
+    box-sizing: border-box;
+    /* Includes padding in width calculation */
+}
+
+/* Search button styling */
+.postcode-search-button {
+    text-decoration: none;
+    background-color: #169BED;
+    /* Blue background */
+    color: white;
+    /* White text */
+    text-align: center;
+    transition: background 0.3s ease;
+    /* Smooth hover effect */
+}
+
+.postcode-search-button:hover {
+    background-color: #106193;
+    /* Darker blue on hover */
+}
+
+/* Larger screens: keep items inline */
+@media (min-width: 768px) {
+    .postcode-search {
+        flex: 1;
+        /* Wider input field */
+    }
+
+    .select-modern {
+        flex: 2;
+        /* Moderate size for dropdown */
+    }
+
+    .postcode-search-button {
+        flex: 0.5;
+        /* Smaller button */
+    }
+}
+
+/* Responsive button container */
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    /* Align buttons on opposite ends */
+    gap: 10px;
+    /* Space between buttons */
+    padding: 10px 0;
+    /* Top and bottom spacing */
+    max-width: 100%;
+}
+
+/* Mobile view: Stack buttons vertically */
+@media (max-width: 768px) {
+    .button-container {
+        flex-direction: column;
+        /* Stack buttons vertically */
+    }
+}
+
+.select-field option:disabled {
+    color: #888;
+    /* Gray color for disabled option */
+    font-style: italic;
+    /* Optional: Italicize for emphasis */
+}
+
+.tab-link-tab-1.part-a.w--current {
+    display: block !important;
+}
+
+.tab-link-tab-1.w--current {
+    background-color: #c8c8c8 !important;
+}
+
+/* Base Upload Container */
+.file-upload-container {
+    display: flex;
+    flex-direction: column;
+    border: 2px dashed #169BED;
+    padding: 2px;
+    border-radius: 12px;
+    text-align: center;
+    transition: border 0.3s ease;
+    width: 100%;
+}
+
+/* Hover Effect */
+.file-upload-container:hover {
+    border-color: #169BED;
+}
+
+/* Upload Label */
+.file-upload-label {
+    cursor: pointer;
+    font-weight: bold;
+    color: #169BED;
+    padding: 10px;
+}
+
+/* Preview Container */
+.file-preview-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Image Preview */
+.file-preview-image {
+    max-width: 100%;
+    max-height: 103px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+/* Text Preview (for non-images) */
+.file-preview-text {
+    font-size: 14px;
+    color: #555;
+}
+
+/* Cancel Button */
+.file-remove-btn {
+    background-color: #E33101;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.file-remove-btn:hover {
+    background-color: #E33101;
+}
+
+/* Upload Icon */
+.file-upload-icon {
+    font-size: 40px;
+    color: #888;
+    display: block;
+}
+
+label.file-upload-label {
+    margin: 0px !important;
+}
+
+p.file-upload-name {
+    margin: 0px !important;
+}
+
+/* Base styles for the select dropdown */
+select {
+    -webkit-appearance: none;
+    /* Remove Safari's default style */
+    -moz-appearance: none;
+    appearance: none;
+    background-color: white;
+    /* Remove grey gradient */
+    border: 1px solid #169BED;
+    padding: 8px 12px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+    /* Adjust as needed */
+    outline: none;
+
+    /* Add padding-right for the custom arrow */
+    padding-right: 30px;
+
+    /* Background: add a dropdown arrow */
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 10px;
+}
+
+/* Fix for Safari on iOS: prevent extra padding */
+select::-webkit-select-placeholder {
+    color: inherit;
+}
+
+/* Ensure select wrapper behaves consistently */
+.select-wrapper {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    /* Adjust width as needed */
+}
+
+/* Optional: Hide default dropdown arrow in some cases */
+select::-ms-expand {
+    display: none;
+}
+
+/* Ensure select wrapper is positioned properly */
+.select-wrapper {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+/* Ensure the choices container has a relative position */
+.choices[data-type*="select-multiple"] {
+    position: relative;
+}
+
+/* Modern dropdown arrow */
+.choices[data-type*="select-multiple"]::after {
+    content: "";
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    width: 12px;
+    height: 12px;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>');
+    background-size: contain;
+    background-repeat: no-repeat;
+    transform: translateY(-50%);
+    pointer-events: none;
+    transition: transform 0.2s ease-in-out;
+}
+
+/* Rotate the arrow when dropdown is open */
+.choices.is-open::after {
+    transform: translateY(-50%) rotate(180deg);
+}
+
+.tab-block {
+    width: 100% !important;
+}
+
+/* Ensure the container does not stretch too wide */
+.w-tab-menu {
+    max-width: 1920px;
+    /* Prevents breaking on larger screens */
+    width: 100%;
+    margin: 0 auto;
+    /* Centers the container */
+}
+
+/* Responsive tab links */
+.w-tab-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    max-width: 100%;
+}
+
+/* Flexbox for better alignment inside the tab */
+.tab-block {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+/* Make the row responsive */
+.comment.w-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+}
+
+/* Responsive column handling */
+.align-left,
+.align-right {
+    flex: 1;
+    min-width: 250px;
+    /* Ensures columns do not get too small */
+}
+
+/* Responsive Media Queries */
+@media screen and (min-width: 1921px) {
+    .w-tab-menu {
+        max-width: 85%;
+        /* Restricts layout from breaking */
+    }
+
+    .comment.w-row {
+        max-width: 80%;
+        margin: auto;
+    }
+}
+
+.progress-container {
+    width: 100%;
+    position: relative;
+    z-index: 1;
+}
+
+.progressbar li {
+    float: left;
+    width: 10%;
+    position: relative;
+    text-align: center;
+}
+
+.progressbar {
+    counter-reset: step;
+}
+
+.progressbar li:before {
+    content: counter(step);
+    font-size: 13px;
+    counter-increment: step;
+    width: 26px;
+    height: 26px;
+    border: none;
+    display: block;
+    margin: 0 auto 10px auto;
+    border-radius: 50%;
+    line-height: 27px;
+    background: #eee;
+    color: #000;
+    text-align: center;
+    font-weight: bold;
+}
+
+.progressbar li:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    background: #eee;
+    top: 13px;
+    left: -50%;
+    z-index: -1;
+}
+
+.progressbar li.active::after {
+    background: #eee;
+}
+
+.progressbar li.active::before,
+.progressbar li.active>li::before {
+    border-color: #000;
+    background: #000;
+    color: white;
+}
+
+.progressbar li:first-child:after {
+    content: none;
+}
+
+.progressbar li::marker {
+    content: none;
+    /* Removes any markers */
+    display: none;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+    .progressbar li:after {
+        content: none;
+    }
+}
+
+.progressbar li {
+    list-style: none;
+    /* Removes default markers in all browsers, including Safari */
+}
+
+/* Modernized Select Dropdown */
+.select-modern {
+    width: 100%;
+    /* Responsive full width */
+    max-width: 400px;
+    /* Limit width for better usability */
+    padding: 12px 16px;
+    border: 2px solid #169BED;
+    /* Modern blue border */
+    border-radius: 10px;
+    /* Smooth rounded corners */
+    background: #fff;
+    /* White background */
+    font-size: 16px;
+    /* Readable font size */
+    color: #333;
+    /* High contrast text */
+    cursor: pointer;
+    /* Indicate interactivity */
+    outline: none;
+    /* Remove default focus outline */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* Subtle shadow for depth */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    appearance: none;
+    /* Remove default system styles */
+    position: relative;
+}
+
+/* Hover effect */
+.select-modern:hover {
+    border-color: #169BED;
+}
+
+/* Focus effect */
+.select-modern:focus {
+    border-color: #169BED;
+    box-shadow: 0 0 8px rgba(43, 108, 176, 0.4);
+}
+
+/* Disabled state */
+.select-modern:disabled {
+    background: #f0f0f0;
+    color: #999;
+    cursor: not-allowed;
+    border-color: #ddd;
+}
+
+/* Custom dropdown arrow */
+.select-modern-wrapper {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.select-modern-wrapper::after {
+    content: "▼";
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 14px;
+    color: #666;
+    pointer-events: none;
+    transition: transform 0.2s ease-in-out;
+}
+
+/* Option styling */
+.select-modern option {
+    padding: 10px;
+    background: #fff;
+    color: #333;
+}
+
+/* Disabled options */
+.select-modern option:disabled {
+    color: #888;
+    font-style: italic;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 600px) {
+    .select-modern {
+        width: 100%;
+        /* Full width on smaller screens */
+    }
+}
+
+.w-slider-arrow-left,
+.w-slider-arrow-right {
+    color: #929BBE !important;
+}
+
+::placeholder {
+    color: #c4c4c4;
+    opacity: 1;
+    /* Ensure full opacity in some browsers */
+}
+
+:-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: #F3F4F8;
+}
+
+::-ms-input-placeholder {
+    /* Microsoft Edge */
+    color: #F3F4F8;
+}
+
+/* Field Borders */
+input,
+textarea,
+select {
+    border-color: #169BED;
+    /* Apply color to field borders */
+}
+
+/* Titles (Headings) */
+/* h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: #3b88fe;
+  } */
+
+.h-registered {
+    color: #169BED;
+}
+
+/* Buttons (Default State) */
+/*.w-button {
+     background-color: #3b88fe;
+   } */
+
+/* Button styling */
+.back-button,
+.next-button {
+    padding: 12px 20px;
+    /* Comfortable button size */
+    font-size: 16px;
+    /* Readable text */
+    text-decoration: none;
+    /* Remove underlines */
+    border: 1px solid #169BED;
+    /* Button border */
+    border-radius: 8px;
+    /* Rounded corners */
+    box-sizing: border-box;
+    /* Ensure padding is included in width */
+    text-align: center;
+    /* Center text */
+    flex: 1;
+    /* Make buttons flexible for even spacing */
+    transition: background 0.3s ease;
+    /* Smooth hover effect */
+}
+
+/* Back button style */
+.back-button {
+    background-color: white;
+    color: #169BED;
+}
+
+.back-button:hover {
+    background-color: #f0f8ff;
+    /* Light blue hover */
+}
+
+/* Next button style */
+.next-button {
+    background-color: #169BED;
+    color: white;
+}
+
+.next-button:hover {
+    background-color: #137aba;
+    /* Darker blue hover */
+}
+
+@media screen and (max-width: 767px) {
+    .w-col {
+        float: left;
+        width: 100%;
+        min-height: 1px;
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+        position: relative;
+    }
+}
+
+.add-info-block {
+    background-color: #F3F4F8;
+    padding: 20px;
+    color: #041729;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+
+.sort-code-block {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.sort-code-block input {
+    width: 38px;
+    height: 38px;
+    text-align: center;
+    font-size: 14px;
+    border: 1px solid #3b88fe;
+    border-radius: 5px;
+    outline: none;
+}
+
+.sort-code-block span {
+    font-size: 20px;
+    color: black;
+}
+
+.custom-select-placeholder option[disabled] {
+    color: #b1b1b1 !important;
+}
+
+#pdf-content {
+    font-size: 10px !important;
+}
+
+#pdf-content h1,
+#pdf-content h2,
+#pdf-content h3,
+#pdf-content h4,
+#pdf-content h5,
+#pdf-content h6 {
+    color: black !important;
+}
+
+@media print {
+    @page {
+        size: A4;
+        margin: 25mm;
+        /* Standard A4 margin */
+    }
+
+    #pdf-content {
+        margin: 25mm;
+        /* Ensure content stays within safe printing area */
+    }
+}
+
+.select-field option {
+    color: black;
+    /* Ensures options appear correctly */
+}
+
+.select-field:valid {
+    color: rgb(0, 0, 0);
+}
+
+.select-field {
+    color: #b1b1b1;
+    /* Default placeholder color */
+}
+
+.custom-placeholder {
+    color: #b1b1b1 !important;
+}
+
+.choices__inner {
+    border-color: #3b88fe !important;
+}
+
+#pdf-footer {
+    width: 100%;
+    background-color: #b3b3b3;
+    /* Matches gray background from the image */
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.signature-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    margin: auto;
+}
+
+.signature-block {
+    width: 45%;
+    /* Each signature block takes 45% width */
+    text-align: left;
+    font-size: 14px;
+    font-family: Arial, sans-serif;
+    color: black;
+}
+
+.postcode-search {
+    color: black;
+}
+
+input {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+}
