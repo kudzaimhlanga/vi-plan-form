@@ -179,7 +179,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
 function setDropdownColor(
 	selector,
-	defaultColor = '#b1b1b1',
+	// defaultColor = '#b1b1b1',
+	defaultColor = '#000',
 	selectedColor = 'rgb(0, 0, 0)'
 ) {
 	const dropdowns = document.querySelectorAll(selector);

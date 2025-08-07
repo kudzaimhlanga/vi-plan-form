@@ -64,7 +64,7 @@
 
 
 
-.w-button{
+.w-button {
     background-color: var(--button--primary-background);
     color: white;
     border-radius: 8rem;
@@ -157,16 +157,16 @@ select::-ms-expand {
     width: 100%;
 }
 
-.input_wrapper:has(*:hover),
-.input_wrapper:has(*:focus){
+.input_wrapper:has(.is-active),
+.input_wrapper:has(*:focus) {
     z-index: 5;
 }
 
-.choices__inner{
+.choices__inner {
     background-color: transparent;
 }
 
-.choices__list--multiple .choices__item{
+.choices__list--multiple .choices__item {
     background-color: var(--button--primary-background);
 }
 
@@ -197,12 +197,12 @@ select::-ms-expand {
 } */
 
 
-.tabs:not(:has(.w--current)){
-    .tab-content{
+.tabs:not(:has(.w--current)) {
+    .tab-content {
         display: none;
     }
 
-    .tab-block{
+    .tab-block {
         border-bottom: none;
     }
 }

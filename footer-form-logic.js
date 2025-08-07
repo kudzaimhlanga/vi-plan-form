@@ -277,11 +277,21 @@ function initializePostcodeLookup(
 
     searchButton.addEventListener("click", function () {
         const postcode = postcodeInput.value.trim();
+
+
         if (postcode === "") {
             console.log("Please enter a postcode.");
             //   alert("Please enter a postcode.");
             return;
         }
+
+        if (postcodeInput.parentElement.querySelector(".select-modern")){
+            console.log("Dropdown already exists");
+            return;
+        }
+
+
+
         // Create dropdown to show address options
         const addressDropdown = document.createElement("select");
         // Set the id attribute
