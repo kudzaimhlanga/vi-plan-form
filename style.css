@@ -459,3 +459,7 @@ input {
     opacity: 1 !important;
     pointer-events: auto !important;
 }
+
+input[type="date"]:focus-visible {
+    outline: none !Important;
+}

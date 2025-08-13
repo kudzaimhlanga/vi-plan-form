@@ -138,6 +138,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		'Master-Contacts-Title',
 		'Master-Contacts-First-Name',
 		'Master-Contact-Last-Name',
+		'Master-Contact-DOB',
 		'Master-Contact-Role-Dropdown',
 		'Master-Contacts-Job-title',
 		'Master-Contacts-Mobile-Phonenumber',
@@ -150,6 +151,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		'Renewal-Contacts-Title',
 		'Renewal-Contacts-First-Name',
 		'Renewal-Contact-Last-Name',
+		'Renewal-Contact-DOB',
 		'Renewal-Contact-Role-Dropdown',
 		'Renewal-Contacts-Job-title',
 		'Renewal-Contacts-Mobile-Phonenumber',
@@ -162,6 +164,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		'Financial-Contacts-Title',
 		'Financial-Contacts-First-Name',
 		'Financial-Contact-Last-Name',
+		'Financial-Contact-DOB',
 		'Financial-Contact-Role-Dropdown',
 		'Financial-Contacts-Job-title',
 		'Financial-Contacts-Mobile-Phonenumber',
@@ -356,6 +359,7 @@ function copyContactDetails(
 	title,
 	firstname,
 	lastname,
+	dob,
 	role,
 	jobtitle,
 	mobile,
@@ -370,6 +374,7 @@ function copyContactDetails(
 				{ source: 'Contacts-Title', target: title },
 				{ source: 'Contacts-First-Name', target: firstname },
 				{ source: 'Contact-Last-Name', target: lastname },
+				{ source: 'Contact-DOB', target: dob },
 				{ source: 'Contact-Role-Dropdown', target: role },
 				{ source: 'Contacts-Job-title', target: jobtitle },
 				{ source: 'Contacts-Mobile-Phonenumber', target: mobile },
@@ -416,6 +421,7 @@ function handleContactSameAsPrimary(selectedId) {
 			'Master-Contacts-Title',
 			'Master-Contacts-First-Name',
 			'Master-Contact-Last-Name',
+			'Master-Contact-DOB',
 			'Master-Contact-Role-Dropdown',
 			'Master-Contacts-Job-title',
 			'Master-Contacts-Mobile-Phonenumber',
@@ -427,6 +433,7 @@ function handleContactSameAsPrimary(selectedId) {
 			'Renewal-Contacts-Title',
 			'Renewal-Contacts-First-Name',
 			'Renewal-Contact-Last-Name',
+			'Renewal-Contact-DOB',
 			'Renewal-Contact-Role-Dropdown',
 			'Renewal-Contacts-Job-title',
 			'Renewal-Contacts-Mobile-Phonenumber',
@@ -438,6 +445,7 @@ function handleContactSameAsPrimary(selectedId) {
 			'Financial-Contacts-Title',
 			'Financial-Contacts-First-Name',
 			'Financial-Contact-Last-Name',
+			'Financial-Contact-DOB',
 			'Financial-Contact-Role-Dropdown',
 			'Financial-Contacts-Job-title',
 			'Financial-Contacts-Mobile-Phonenumber',
@@ -459,6 +467,7 @@ function checkCopyContactDetails(
 	title,
 	firstname,
 	lastname,
+	dob,
 	role,
 	jobtitle,
 	mobile,
@@ -475,6 +484,7 @@ function checkCopyContactDetails(
 				{ source: 'Contacts-Title', target: title },
 				{ source: 'Contacts-First-Name', target: firstname },
 				{ source: 'Contact-Last-Name', target: lastname },
+				{ source: 'Contact-DOB', target: dob },
 				{ source: 'Contact-Role-Dropdown', target: role },
 				{ source: 'Contacts-Job-title', target: jobtitle },
 				{ source: 'Contacts-Mobile-Phonenumber', target: mobile },
@@ -942,7 +952,7 @@ async function generatePDFSelfBilling(title, formData) {
 	doc.text('The self-biller (the customer) agrees:', 20, 100);
 	doc.setFontSize(10);
 	doc.text(
-		'1. To issue self-billed invoices for all supplies made to them by the self-billee until 5 years from today\'s date.',
+		"1. To issue self-billed invoices for all supplies made to them by the self-billee until 5 years from today's date.",
 		25,
 		110,
 		{ maxWidth: 160 }
@@ -970,7 +980,7 @@ async function generatePDFSelfBilling(title, formData) {
 	doc.text('The self-billee (the supplier) agrees:', 20, 160);
 	doc.setFontSize(10);
 	doc.text(
-		'1. To accept invoices raised by the self-biller on their behalf until 5 years from today\'s date.',
+		"1. To accept invoices raised by the self-biller on their behalf until 5 years from today's date.",
 		25,
 		170,
 		{ maxWidth: 160 }
