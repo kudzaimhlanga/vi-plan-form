@@ -15,8 +15,19 @@
 	}
 
 	function updateStep(index) {
-		stepBlocks.forEach((block) => block.classList.remove('is-active'));
-		stepBlocks[index].classList.add('is-active');
+		stepBlocks.forEach((block, blockIndex) => {
+			// Reset all state classes first
+			block.classList.remove('is-active', 'is-complete');
+
+			// Apply the correct state
+			if (blockIndex < index) {
+				block.classList.add('is-complete');
+			} else if (blockIndex === index) {
+				block.classList.add('is-active');
+			}
+		});
+		// stepBlocks.forEach((block) => block.classList.remove('is-active'));
+		// stepBlocks[index].classList.add('is-active');
 	}
 
 	function observeDisplayChange(element, callback) {
