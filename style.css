@@ -461,5 +461,5 @@ input {
 }
 
 input[type="date"]:focus-visible {
-    outline: none !Important;
+    outline: 1px solid #169bed !Important;
 }
